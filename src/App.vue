@@ -1,16 +1,36 @@
 <template>
   <div id="app">
     <NavigationBar/>
+    <Notifications></Notifications>
+    <Feed/>
+    <Upload/>
+    <Messages v-if="setActiveContent()" />
+    <Post/>
   </div>
 </template>
 
 <script>
 import NavigationBar from './components/NavigationBar'
+import Notifications from './components/Notifications'
+import Feed from './components/Feed'
+import Upload from './components/Upload'
+import Messages from './components/Messages'
+import Post from './components/Post'
 
 export default {
   name: 'app',
   components: {
-    NavigationBar
+    NavigationBar,
+    Notifications,
+    Feed,
+    Upload,
+    Messages,
+    Post
+  },
+  methods: {
+    setActiveContent() {
+      return true;
+    }
   }
 }
 </script>

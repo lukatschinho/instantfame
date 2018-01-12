@@ -1,15 +1,14 @@
 <template>
-  <div class="navigation">
-    {{ navigation }}
+  <div class="post">
+    1 Post
   </div>
 </template>
 
 <script>
 export default {
-  name: 'NavigationBar',
+  name: 'Post',
   data () {
     return {
-      navigation: 'NAV BAR'
     }
   }
 }

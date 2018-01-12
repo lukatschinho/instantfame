@@ -1,15 +1,14 @@
 <template>
-  <div class="navigation">
-    {{ navigation }}
+  <div class="feed">
+    Feed
   </div>
 </template>
 
 <script>
 export default {
-  name: 'NavigationBar',
+  name: 'Feed',
   data () {
     return {
-      navigation: 'NAV BAR'
     }
   }
 }

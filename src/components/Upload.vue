@@ -1,15 +1,15 @@
 <template>
-  <div class="navigation">
-    {{ navigation }}
+  <div class="upload">
+    Upload
+    <input type="file" accept="image/*" capture="camera">
   </div>
 </template>
 
 <script>
 export default {
-  name: 'NavigationBar',
+  name: 'Upload',
   data () {
     return {
-      navigation: 'NAV BAR'
     }
   }
 }
