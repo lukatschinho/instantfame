@@ -1,18 +1,20 @@
 <template>
   <div id="app">
-    <!-- <AppHeader/> -->
+    <AppHeader/>
     <AppContent/>
     <AppNavigationBar/>
   </div>
 </template>
 
 <script>
+import AppHeader from './components/AppHeader'
 import AppContent from './components/AppContent'
 import AppNavigationBar from './components/AppNavigationBar'
 
 export default {
   name: 'app',
   components: {
+    AppHeader,
     AppNavigationBar,
     AppContent
   },
@@ -27,6 +29,7 @@ export default {
 <style>
 
 @import 'assets/scss/normalize';
+@import 'assets/scss/basics';
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
