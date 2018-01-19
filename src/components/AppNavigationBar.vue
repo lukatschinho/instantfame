@@ -32,10 +32,8 @@ export default {
   background: black;
   padding: 24px 0;
   color: white;
-  background-color: #fff;
-  border-top: 1px solid rgba(0,0,0,.0975);
   a {
-    color: black;
+    color: white;
     padding: 0 8px;
     text-decoration: none;
     font-weight: bold;

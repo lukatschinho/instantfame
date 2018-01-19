@@ -7,16 +7,16 @@
 </template>
 
 <script>
-import AppHeader from './components/AppHeader'
 import AppContent from './components/AppContent'
 import AppNavigationBar from './components/AppNavigationBar'
+import AppHeader from './components/AppHeader'
 
 export default {
   name: 'app',
   components: {
-    AppHeader,
     AppNavigationBar,
-    AppContent
+    AppContent,
+    AppHeader
   },
   methods: {
     setActiveContent() {
@@ -37,6 +37,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-color: #fafafa;
 }
 </style>

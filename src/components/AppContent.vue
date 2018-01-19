@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <Upload/>
-    <Messages/>
+    <Messages v-if="contentIsActive()" />
     <Feed/>
   </div>
 </template>
