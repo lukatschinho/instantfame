@@ -1,31 +1,20 @@
 <template>
   <div id="app">
-    <NavigationBar/>
-    <Notifications></Notifications>
-    <Feed/>
-    <Upload/>
-    <Messages v-if="setActiveContent()" />
-    <Post/>
+    <!-- <AppHeader/> -->
+    <AppContent/>
+    <AppNavigationBar/>
   </div>
 </template>
 
 <script>
-import NavigationBar from './components/NavigationBar'
-import Notifications from './components/Notifications'
-import Feed from './components/Feed'
-import Upload from './components/Upload'
-import Messages from './components/Messages'
-import Post from './components/Post'
+import AppContent from './components/AppContent'
+import AppNavigationBar from './components/AppNavigationBar'
 
 export default {
   name: 'app',
   components: {
-    NavigationBar,
-    Notifications,
-    Feed,
-    Upload,
-    Messages,
-    Post
+    AppNavigationBar,
+    AppContent
   },
   methods: {
     setActiveContent() {

@@ -1,12 +1,19 @@
 <template>
   <div class="feed">
-    Feed
+    <Post/>
+    <Post/>
+    <Post/>
   </div>
 </template>
 
 <script>
+import Post from './Post'
+
 export default {
   name: 'Feed',
+  components: {
+    Post
+  },
   data () {
     return {
     }

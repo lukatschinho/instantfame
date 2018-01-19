@@ -1,9 +1,8 @@
 <template>
   <div class="navigation">
-    <a href="" @click="setActive()">Ich Ich Ich</a>
-    <a href="" @click="setActive()">Profil</a>
-    <a href="" @click="setActive()">Upload</a>
-    <a href="" @click="setActive()">Nachrichten</a>
+    <a href="" @click="contentIsActive(feed)">Me Me Me</a>
+    <a href="" @click="contentIsActive(upload)">Upload</a>
+    <a href="" @click="contentIsActive(messages)">Messages</a>
   </div>
 </template>
 
@@ -16,8 +15,8 @@ export default {
     }
   },
   methods: {
-    setActive() {
-      return true;
+    contentIsActive(link) {
+      return link;
     }
   }
 }
