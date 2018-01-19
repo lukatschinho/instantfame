@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <AppHeader ref="header"/>
-    <Feed v-if="this.activeLink === 'feed'"/>
-    <Upload v-if="this.activeLink === 'upload'"/>
-    <Messages v-if="this.activeLink === 'messages'"/>
+    <div class="wrapper">
+      <Feed v-if="this.activeLink === 'feed'"/>
+      <Upload v-if="this.activeLink === 'upload'"/>
+      <Messages v-if="this.activeLink === 'messages'"/>
+    </div>
     <AppNavigationBar @navigationBarClicked="setActiveContent"/>
   </div>
 </template>

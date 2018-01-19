@@ -35,11 +35,17 @@ export default {
   color: white;
   background-color: #fff;
   border-top: 1px solid rgba(0,0,0,.0975);
-  a {
-    color: black;
-    padding: 0 8px;
-    text-decoration: none;
-    font-weight: bold;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      color: black;
+      padding: 0 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
   }
 }
 

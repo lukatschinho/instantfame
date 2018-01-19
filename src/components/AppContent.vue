@@ -1,0 +1,40 @@
+<template>
+  <div class="wrapper">
+    <div class="content">
+      <Upload/>
+      <Messages v-if="contentIsActive()" />
+      <Feed/>
+    </div>
+  </div>
+</template>
+
+<script>
+import Upload from './Upload'
+import Messages from './Messages'
+import Feed from './Feed'
+
+export default {
+  name: 'Content',
+  components: {
+    Upload,
+    Messages,
+    Feed
+  },
+  data () {
+    return {
+    }
+  },
+  methods: {
+    contentIsActive(link) {
+      return link;
+    }
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
+.content {
+  margin-top: 30px;
+}
+</style>
