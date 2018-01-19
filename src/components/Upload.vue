@@ -84,7 +84,30 @@ export default {
 				// re-set back to local storage
 				localStorage.setItem('posts', JSON.stringify(posts));
 			}
-  	}
+		},
+		
+		getPost() {
+			var posts = JSON.parse(localStorage.getItem('posts'));
+
+			// get output id
+			var postResults = document.getElementById('');
+			// build output
+			postResults.innerHTML = '';
+
+			// get information out of localStorage post object
+			for(var i=0; i < posts.length; i++) {
+				var title = posts[i].title;
+				var desc = posts[i].description;
+				var photo = posts[i].photo;
+
+				postResults.innerHTML += '<div>' +
+																		'<div>' +
+																			'<p>' + title + '</p>' +
+																			'<p>' + desc + '</p>' +
+																		'</div>' +
+																	'</div>';
+			}
+		}
   }
 }
 </script>
