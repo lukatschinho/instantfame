@@ -5,7 +5,7 @@
       <div class="logo">
         <img src="../assets/InstaLogo.png" alt="Logo">
       </div>
-      <a href="" class="newNotifications">
+      <a href="#" @click="contentIsActive('notifications')" class="newNotifications">
         <img class="icon" src="../assets/icons/likes.png" alt="Likes"/><img class="icon" src="../assets/icons/comments.png" alt="Comments"/><img class="icon" src="../assets/icons/follower.png" alt="Follower"/>
       </a>
     </div>
@@ -18,6 +18,11 @@ export default {
   name: 'AppHeader',
   data () {
     return {
+    }
+  },
+  methods: {
+    contentIsActive(link) {
+      this.$emit("headerClicked",link)
     }
   }
 }

@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    <AppHeader ref="header"/>
+    <AppHeader @headerClicked="setActiveContent"/>
     <div class="wrapper">
       <Feed v-if="this.activeLink === 'feed'"/>
       <Upload v-if="this.activeLink === 'upload'"/>
       <Messages v-if="this.activeLink === 'messages'"/>
+      <Notifications v-if="this.activeLink === 'notifications'"/>
     </div>
     <AppNavigationBar @navigationBarClicked="setActiveContent"/>
   </div>
@@ -16,6 +17,7 @@ import AppNavigationBar from './components/AppNavigationBar'
 import Feed from './components/Feed'
 import Upload from './components/Upload'
 import Messages from './components/Messages'
+import Notifications from './components/Notifications'
 
 export default {
   name: 'app',
@@ -24,7 +26,8 @@ export default {
     AppHeader,
     Feed,
     Upload,
-    Messages
+    Messages,
+    Notifications
   },
   data () {
     return {
