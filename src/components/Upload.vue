@@ -16,11 +16,12 @@
 		<!-- photo for the new post-->
 		<div class="form-group">
 			<label for="post-photo">photo upload</label>
-      <input type="file" id="post-photo" data-photo accept="image/*" capture="camera">
+      <input type="file" id="post-photo" data-photo accept="image/*" capture="camera" @change="previewPhoto()">
 		</div>
 		<!-- button to submit the new post-->
 		<button type="button" @click="savePost()">Post</button>
 	</form>
+	<div data-preview></div>
 </div>
 
 </template>
@@ -35,6 +36,26 @@ export default {
     }
   },
 	methods: {
+		previewPhoto() {
+			console.log('change');
+			var files = !!this.files ? this.files : [];
+			// no file selected, or no FileReader support
+			if (!files.length || !window.FileReader) return;
+
+			// only image file
+			if (/^image/.test(files[0].type)) {
+				// instance of the FileReader
+				var reader = new FileReader(); 
+				// read the local file
+				reader.readAsDataURL(files[0]);
+				/*
+				// set image data as background of div
+				reader.onloadend = function() {
+					$("#imagePreview").css("background-image", "url(" + this.result + ")");
+				}*/
+			}
+		},
+
   	savePost() {
 			// create new post object
 			var post = {
