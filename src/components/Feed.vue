@@ -1,6 +1,5 @@
 <template>
   <div class="feed">
-    <button type="button" name="Refresh" @click="consolePost()">Refresh</button>
     <div class="posts" v-for="(post, index) in postsReversed">
       <Post :description="post.description" :photo="post.photo"/>
     </div>
@@ -24,13 +23,8 @@ export default {
     postsReversed() {
       return this.posts.reverse()
     }
-  },
-  methods: {
-    consolePost() {
-      console.log(this.posts[0].photo)
-    }
   }
-  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
