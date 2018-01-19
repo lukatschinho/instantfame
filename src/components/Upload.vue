@@ -31,12 +31,35 @@ export default {
   data () {
     return {
 			postTitle: '',
-			postDesc: ''
+			postDesc: '',
     }
   },
 	methods: {
   	savePost() {
-    	console.log(this.postTitle + " und " + this.postDesc);
+			// create new post object
+			var post = {
+				title: this.postTitle,
+				description: this.postDesc
+			}
+
+			console.log(post);
+			
+			// test if the local storage with the key 'posts' is empty
+			if(localStorage.getItem('posts') === null) {
+				// init array
+				var posts = [];
+				// add post object to array
+				posts.push(post);
+				// parse array of objects to string and set to local storage
+				localStorage.setItem('posts', JSON.stringify(posts));
+			} else {
+				// get posts from local storage and parse to JSON
+				var posts = JSON.parse(localStorage.getItem('posts'));
+				// add post to array
+				posts.push(post);
+				// re-set back to local storage
+				localStorage.setItem('posts', JSON.stringify(posts));
+			}
   	}
   }
 }
