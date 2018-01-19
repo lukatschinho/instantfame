@@ -15,13 +15,13 @@
 		</div>
 		<!-- photo for the new post-->
 		<div class="form-group">
-			<label for="post-photo">photo upload</label>
-      <input type="file" id="post-photo" data-photo accept="image/*" capture="camera" @change="previewPhoto()">
+			<input type="file" name="image" class="img" data-file @change="previewPhoto()">
+      <!-- <input type="file" id="post-photo" data-photo accept="image/*" capture="camera" @change="previewPhoto()"> -->
 		</div>
 		<!-- button to submit the new post-->
 		<button type="button" @click="savePost()">Post</button>
 	</form>
-	<div data-preview></div>
+	<div class="imagePreview" data-preview></div>
 </div>
 
 </template>
@@ -33,49 +33,52 @@ export default {
     return {
 			postTitle: '',
 			postDesc: '',
+			postPhoto: ''
     }
   },
+
 	methods: {
 		previewPhoto() {
-			console.log('change');
-			var files = !!this.files ? this.files : [];
-			// no file selected, or no FileReader support
-			if (!files.length || !window.FileReader) return;
+			let preview = document.querySelectorAll('[data-preview]');
+			let file = document.querySelector('input[type=file]').files[0];
+			let reader  = new FileReader();
 
-			// only image file
-			if (/^image/.test(files[0].type)) {
-				// instance of the FileReader
-				var reader = new FileReader(); 
-				// read the local file
-				reader.readAsDataURL(files[0]);
-				/*
-				// set image data as background of div
-				reader.onloadend = function() {
-					$("#imagePreview").css("background-image", "url(" + this.result + ")");
-				}*/
+			reader.addEventListener("load", () => {
+				// change preview background image
+				preview[0].style.backgroundImage = 'url(' + reader.result + ')';
+				console.log(reader.result);
+				// save base64 code in postPhoto data variable
+				this.postPhoto = reader.result;
+				console.log(this.postPhoto);
+			}, false);
+
+			if (file) {
+				reader.readAsDataURL(file);
 			}
 		},
 
   	savePost() {
+			console.log(this.postPhoto);
 			// create new post object
-			var post = {
+			let post = {
 				title: this.postTitle,
-				description: this.postDesc
+				description: this.postDesc,
+				photo: this.postPhoto
 			}
 
-			console.log(post);
+			//console.log(post);
 			
 			// test if the local storage with the key 'posts' is empty
 			if(localStorage.getItem('posts') === null) {
 				// init array
-				var posts = [];
+				let posts = [];
 				// add post object to array
 				posts.push(post);
 				// parse array of objects to string and set to local storage
 				localStorage.setItem('posts', JSON.stringify(posts));
 			} else {
 				// get posts from local storage and parse to JSON
-				var posts = JSON.parse(localStorage.getItem('posts'));
+				let posts = JSON.parse(localStorage.getItem('posts'));
 				// add post to array
 				posts.push(post);
 				// re-set back to local storage
@@ -90,9 +93,19 @@ export default {
 <style scoped lang="scss">
 
 .saveForm {
-	padding: 50px 0;
+	padding: 50px 0 20px 0;
 	.form-group {
 		padding: 20px 0;
 	}
 }
+
+.imagePreview {
+	width: 200px;
+	height: 200px;
+	background-position: center center;
+	background-size: cover;
+	border: 1px solid #000;
+	display: inline-block;
+}
+
 </style>
