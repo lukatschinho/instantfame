@@ -1,9 +1,12 @@
 <template>
-  <div class="navigation">
-    <a @click="contentIsActive('feed')">Me Me Me</a>
-    <a @click="contentIsActive('upload')">Upload</a>
-    <a @click="contentIsActive('messages')">Messages</a>
+    <div class="navigation">
+      <div class="wrapper">
+        <a @click="contentIsActive('feed')">Me Me Me</a>
+        <a @click="contentIsActive('upload')">Upload</a>
+        <a @click="contentIsActive('messages')">Messages</a>
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -32,7 +35,6 @@ export default {
   width: 100%;
   background: black;
   padding: 24px 0;
-  color: white;
   background-color: #fff;
   border-top: 1px solid rgba(0,0,0,.0975);
 
@@ -41,7 +43,7 @@ export default {
     justify-content: space-between;
 
     a {
-      color: black;
+      color: #000;
       padding: 0 8px;
       text-decoration: none;
       font-weight: bold;
