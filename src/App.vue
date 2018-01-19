@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <AppHeader/>
-    <AppContent/>
+    <AppContent ref="content"/>
     <AppNavigationBar/>
   </div>
 </template>
