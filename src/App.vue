@@ -1,31 +1,33 @@
 <template>
   <div id="app">
     <NavigationBar/>
-    <Notifications></Notifications>
-    <Feed/>
-    <Upload/>
-    <Messages v-if="setActiveContent()" />
-    <Post/>
+    <AppHeader/>
+    <div class="wrapper">
+      <Feed/>
+      <Upload/>
+      <Messages v-if="setActiveContent()" />
+      <Notifications/>
+    </div>
   </div>
 </template>
 
 <script>
 import NavigationBar from './components/NavigationBar'
-import Notifications from './components/Notifications'
-import Feed from './components/Feed'
 import Upload from './components/Upload'
 import Messages from './components/Messages'
-import Post from './components/Post'
+import Feed from './components/Feed'
+import AppHeader from './components/AppHeader'
+import Notifications from './components/Notifications'
 
 export default {
   name: 'app',
   components: {
     NavigationBar,
-    Notifications,
-    Feed,
+    AppHeader,
     Upload,
     Messages,
-    Post
+    Feed,
+    Notifications
   },
   methods: {
     setActiveContent() {
@@ -38,6 +40,7 @@ export default {
 <style>
 
 @import 'assets/scss/normalize';
+@import 'assets/scss/basics';
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -45,6 +48,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  background-color: #fafafa;
 }
 </style>
