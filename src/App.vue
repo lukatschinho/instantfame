@@ -9,12 +9,14 @@
 <script>
 import AppContent from './components/AppContent'
 import AppNavigationBar from './components/AppNavigationBar'
+import AppHeader from './components/AppHeader'
 
 export default {
   name: 'app',
   components: {
     AppNavigationBar,
-    AppContent
+    AppContent,
+    AppHeader
   },
   methods: {
     setActiveContent() {
@@ -27,6 +29,7 @@ export default {
 <style>
 
 @import 'assets/scss/normalize';
+@import 'assets/scss/basics';
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -34,6 +37,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
