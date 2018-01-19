@@ -4,7 +4,7 @@
       <div class="avatar" alt="avatar"></div>
       <p class="name">{{ name }}</p>
     </div>
-    <img class="postImage" src="../assets/shithole.jpg" alt="image">
+    <img class="postImage" :src="photo" alt="image">
     <div class="stats">
       <img :src="require('../assets/icons/' + likeIcon)" alt="like" @click="addLike()">
       <img src="../assets/icons/comments.png" alt="comment">
@@ -27,6 +27,7 @@ export default {
   components: {
     Comment
   },
+  props: ["description", "photo"],
   data () {
     return {
       name: 'Vorname Nachname',
@@ -35,7 +36,6 @@ export default {
       img_src: '',
       likeCount: 0,
       commentCount: 0,
-      description: 'Dies ist ein Bild von mir.',
       liked: false
     }
   },
