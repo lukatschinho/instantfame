@@ -1,8 +1,10 @@
 <template>
   <div class="navigation">
-    <a href="" @click="contentIsActive(feed)">Me Me Me</a>
-    <a href="" @click="contentIsActive(upload)">Upload</a>
-    <a href="" @click="contentIsActive(messages)">Messages</a>
+    <div class="wrapper">
+      <a href="" @click="contentIsActive(feed)">Me Me Me</a>
+      <a href="" @click="contentIsActive(upload)">Upload</a>
+      <a href="" @click="contentIsActive(messages)">Messages</a>
+    </div>
   </div>
 </template>
 
@@ -34,11 +36,17 @@ export default {
   color: white;
   background-color: #fff;
   border-top: 1px solid rgba(0,0,0,.0975);
-  a {
-    color: black;
-    padding: 0 8px;
-    text-decoration: none;
-    font-weight: bold;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      color: black;
+      padding: 0 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
   }
 }
 

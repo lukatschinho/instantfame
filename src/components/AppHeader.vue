@@ -6,15 +6,7 @@
         <img src="../assets/InstaLogo.png" alt="Logo">
       </div>
       <a href="" class="newNotifications">
-        <div class="icon">
-          <img src="../assets/icons/likes.png" alt="Likes">
-        </div>
-        <div class="icon">
-          <img src="../assets/icons/comments.png" alt="Comments">
-        </div>
-        <div class="icon">
-          <img src="../assets/icons/follower.png" alt="Follower">
-        </div>
+        <img class="icon" src="../assets/icons/likes.png" alt="Likes"/><img class="icon" src="../assets/icons/comments.png" alt="Comments"/><img class="icon" src="../assets/icons/follower.png" alt="Follower"/>
       </a>
     </div>
 </div>
@@ -47,7 +39,6 @@ export default {
     align-items: center;
 
     .logo{
-
       img{
         width: 150px;
       }
@@ -58,12 +49,8 @@ export default {
         display: inline-block;
         width: 30px;
         padding-left: 20px;
-
-        img{
-          width: 100%;
         }
       }
     }
   }
-}
 </style>

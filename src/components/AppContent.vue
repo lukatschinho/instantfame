@@ -1,8 +1,10 @@
 <template>
-  <div class="content">
-    <Upload/>
-    <Messages v-if="contentIsActive()" />
-    <Feed/>
+  <div class="wrapper">
+    <div class="content">
+      <Upload/>
+      <Messages v-if="contentIsActive()" />
+      <Feed/>
+    </div>
   </div>
 </template>
 
@@ -33,7 +35,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .content {
-  border: 1px solid red;
-  margin: 16px;
+  margin-top: 30px;
 }
 </style>
