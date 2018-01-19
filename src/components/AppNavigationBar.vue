@@ -1,8 +1,8 @@
 <template>
   <div class="navigation">
-    <a href="" @click="contentIsActive(feed)">Me Me Me</a>
-    <a href="" @click="contentIsActive(upload)">Upload</a>
-    <a href="" @click="contentIsActive(messages)">Messages</a>
+    <a @click="contentIsActive('feed')">Me Me Me</a>
+    <a @click="contentIsActive('upload')">Upload</a>
+    <a @click="contentIsActive('messages')">Messages</a>
   </div>
 </template>
 
@@ -11,12 +11,13 @@ export default {
   name: 'NavigationBar',
   data () {
     return {
-      navigation: 'NAV BAR'
+      navigationText: 'NAV BAR'
     }
   },
   methods: {
     contentIsActive(link) {
-      return link;
+      this.activeLink = link
+      this.$emit("navigationBarClicked",link)
     }
   }
 }

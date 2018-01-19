@@ -1,28 +1,48 @@
 <template>
   <div id="app">
-    <AppHeader/>
-    <AppContent ref="content"/>
-    <AppNavigationBar/>
+    <AppHeader ref="header"/>
+    <Feed v-if="this.activeLink === 'feed'"/>
+    <Upload v-if="this.activeLink === 'upload'"/>
+    <Messages v-if="this.activeLink === 'messages'"/>
+    <AppNavigationBar @navigationBarClicked="setActiveContent"/>
   </div>
 </template>
 
 <script>
-import AppContent from './components/AppContent'
-import AppNavigationBar from './components/AppNavigationBar'
 import AppHeader from './components/AppHeader'
+import AppNavigationBar from './components/AppNavigationBar'
+import Feed from './components/Feed'
+import Upload from './components/Upload'
+import Messages from './components/Messages'
 
 export default {
   name: 'app',
   components: {
     AppNavigationBar,
-    AppContent,
-    AppHeader
+    AppHeader,
+    Feed,
+    Upload,
+    Messages
+  },
+  data () {
+    return {
+      activeLink: 'feed'
+    }
   },
   methods: {
-    setActiveContent() {
-      return true;
+    setActiveContent(link) {
+      this.activeLink = link
+      console.log(link)
     }
   }
+  // mounted () {
+	// 	console.log( "Adding ref" );
+	// 	console.log( this.$refs );
+	// 	console.log( "printing this.$refs.navigation.contentIsActive()" );
+	// 	console.log( this.$refs.navigation.contentIsActive() );
+	// 	console.log( this.$refs.navigation.navigationText );
+	// 	// console.log( article );
+  // }
 }
 </script>
 

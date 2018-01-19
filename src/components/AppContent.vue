@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <Upload/>
-    <Messages v-if="contentIsActive()" />
+    <Messages/>
     <Feed/>
   </div>
 </template>
@@ -23,7 +23,7 @@ export default {
     }
   },
   methods: {
-    contentIsActive(link) {
+    (link) {
       return link;
     }
   }
