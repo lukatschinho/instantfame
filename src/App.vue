@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <AppHeader/>
-    <AppContent/>
+    <AppContent ref="content"/>
     <AppNavigationBar/>
   </div>
 </template>
@@ -29,7 +29,7 @@ export default {
 <style>
 
 @import 'assets/scss/normalize';
-@import 'assets/scss/basics';
+@import 'assets/scss/basics.scss';
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -37,6 +37,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-color: #fafafa;
 }
 </style>
