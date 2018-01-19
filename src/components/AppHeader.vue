@@ -37,12 +37,16 @@ export default {
   padding: 12px 0;
   padding-bottom: 8px;
   position: fixed;
+  top: 0;
   width: 100%;
 
   .wrapper{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 800px;
+    width: 100%;
+    margin: auto;
 
     .logo{
       img{

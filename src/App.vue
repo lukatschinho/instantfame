@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <AppHeader @headerClicked="setActiveContent"/>
-    <div class="wrapper">
+    <div class="content-wrapper">
       <Feed v-if="this.activeLink === 'feed'"/>
       <Upload v-if="this.activeLink === 'upload'"/>
       <Messages v-if="this.activeLink === 'messages'"/>
@@ -51,7 +51,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 
 @import 'assets/scss/normalize';
 @import 'assets/scss/basics.scss';
@@ -63,8 +63,12 @@ export default {
   text-align: center;
   color: #2c3e50;
 
-  .wrapper {
-    margin-top: 30px;
+  .content-wrapper {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 104px;
   }
 }
+
 </style>

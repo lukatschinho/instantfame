@@ -36,9 +36,8 @@ export default {
   border-top: 1px solid rgba(0,0,0,.0975);
   a {
     color: black;
-    padding: 0 8px;
+    padding: 0 16px;
     text-decoration: none;
-    font-weight: bold;
   }
 }
 
