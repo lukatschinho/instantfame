@@ -12,9 +12,11 @@
       <p class="commentCount"><span>{{ commentCount }}</span> commented</p>
     </div>
     <p class="description">{{ description }}</p>
-    <div class="comments">
-      <Comment/>
-      <Comment/>
+    <div class="comments" v-for="(comment, index) in comments">
+      <Comment :author="comment.author" :text="comment.text"/>
+    </div>
+    <div class="addComment">
+      <input type="text" name="addComment" placeholder="Add a comment..." @keyup.13="addComment" v-model="commentText">
     </div>
   </div>
 </template>
@@ -36,7 +38,9 @@ export default {
       img_src: '',
       likeCount: 0,
       commentCount: 0,
-      liked: false
+      liked: false,
+      commentText: "",
+      comments: [{ author: "Hans Wurst", text: "Hallo schönes Bild"}, {author: "Hans Wurst", text: "Hallo schönes Bild"}]
     }
   },
   computed: {
@@ -55,6 +59,11 @@ export default {
         this.liked = false;
         this.likeIcon = 'likes.png';
       }
+    },
+    addComment() {
+      console.log(this.commentText)
+      this.comments.push({author: "Mein Name", text: this.commentText})
+      this.commentText = ""
     }
   }
 }
@@ -111,6 +120,18 @@ export default {
       span {
         font-weight: bold;
       }
+    }
+  }
+
+  .addComment {
+    margin: 15px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0,0,0,.0975);
+
+    input {
+      width: 100%;
+      height: 30px;
+      border: none;
     }
   }
 }
