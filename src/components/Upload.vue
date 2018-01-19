@@ -19,9 +19,10 @@
       <!-- <input type="file" id="post-photo" data-photo accept="image/*" capture="camera" @change="previewPhoto()"> -->
 		</div>
 		<!-- button to submit the new post-->
-		<button type="button" @click="savePost()">Post</button>
+		<button type="button" @click="savePost(), getPost()">Post</button>
 	</form>
 	<div class="imagePreview" data-preview></div>
+	<div data-post-results></div>
 </div>
 
 </template>
@@ -46,10 +47,8 @@ export default {
 			reader.addEventListener("load", () => {
 				// change preview background image
 				preview[0].style.backgroundImage = 'url(' + reader.result + ')';
-				console.log(reader.result);
 				// save base64 code in postPhoto data variable
 				this.postPhoto = reader.result;
-				console.log(this.postPhoto);
 			}, false);
 
 			if (file) {
@@ -58,7 +57,6 @@ export default {
 		},
 
   	savePost() {
-			console.log(this.postPhoto);
 			// create new post object
 			let post = {
 				title: this.postTitle,
@@ -87,10 +85,11 @@ export default {
 		},
 		
 		getPost() {
-			var posts = JSON.parse(localStorage.getItem('posts'));
+			console.log('getPost');
+			let posts = JSON.parse(localStorage.getItem('posts'));
 
 			// get output id
-			var postResults = document.getElementById('');
+			let postResults = document.querySelectorAll('[data-post-results]');
 			// build output
 			postResults.innerHTML = '';
 
@@ -101,10 +100,8 @@ export default {
 				var photo = posts[i].photo;
 
 				postResults.innerHTML += '<div>' +
-																		'<div>' +
-																			'<p>' + title + '</p>' +
-																			'<p>' + desc + '</p>' +
-																		'</div>' +
+																		'<p>' + title + '</p>' +
+																		'<p>' + desc + '</p>' +
 																	'</div>';
 			}
 		}
