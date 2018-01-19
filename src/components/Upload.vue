@@ -3,11 +3,6 @@
 <!-- Upload -->
 <div class="upload">
 	<form class="saveForm" data-save-form>
-  	<div class="form-group">
-			<!-- title of the new post-->
-			<label for="post-title">title</label>
-			<input type="text" id="post-title" v-model="postTitle">
-		</div>
 		<!-- description of the new post-->
 		<div class="form-group">
 			<label for="post-desc">description</label>
@@ -19,10 +14,9 @@
       <!-- <input type="file" id="post-photo" data-photo accept="image/*" capture="camera" @change="previewPhoto()"> -->
 		</div>
 		<!-- button to submit the new post-->
-		<button type="button" @click="savePost(), getPost()">Post</button>
+		<button type="button" @click="savePost()">Post</button>
 	</form>
 	<div class="imagePreview" data-preview></div>
-	<div data-post-results></div>
 </div>
 
 </template>
@@ -32,7 +26,6 @@ export default {
   name: 'Upload',
   data () {
     return {
-			postTitle: '',
 			postDesc: '',
 			postPhoto: ''
     }
@@ -59,7 +52,6 @@ export default {
   	savePost() {
 			// create new post object
 			let post = {
-				title: this.postTitle,
 				description: this.postDesc,
 				photo: this.postPhoto
 			}
@@ -83,28 +75,6 @@ export default {
 				localStorage.setItem('posts', JSON.stringify(posts));
 			}
 		},
-		
-		getPost() {
-			console.log('getPost');
-			let posts = JSON.parse(localStorage.getItem('posts'));
-
-			// get output id
-			let postResults = document.querySelectorAll('[data-post-results]');
-			// build output
-			postResults.innerHTML = '';
-
-			// get information out of localStorage post object
-			for(var i=0; i < posts.length; i++) {
-				var title = posts[i].title;
-				var desc = posts[i].description;
-				var photo = posts[i].photo;
-
-				postResults.innerHTML += '<div>' +
-																		'<p>' + title + '</p>' +
-																		'<p>' + desc + '</p>' +
-																	'</div>';
-			}
-		}
   }
 }
 </script>
