@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <AppHeader/>
-    <AppContent/>
+    <AppContent ref="content"/>
     <AppNavigationBar/>
   </div>
 </template>
@@ -37,6 +37,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-color: #fafafa;
 }
 </style>
