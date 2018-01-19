@@ -1,11 +1,10 @@
 <template>
   <div class="appHeader">
     <div class="wrapper">
-
       <div class="logo">
         <img src="../assets/InstaLogo.png" alt="Logo">
       </div>
-      <a href="" class="newNotifications">
+      <a href="#" @click="contentIsActive('notifications')" class="newNotifications">
         <img class="icon" src="../assets/icons/likes.png" alt="Likes"/><img class="icon" src="../assets/icons/comments.png" alt="Comments"/><img class="icon" src="../assets/icons/follower.png" alt="Follower"/>
       </a>
     </div>
@@ -19,6 +18,11 @@ export default {
   data () {
     return {
     }
+  },
+  methods: {
+    contentIsActive(link) {
+      this.$emit("headerClicked",link)
+    }
   }
 }
 </script>
@@ -30,8 +34,10 @@ export default {
 .appHeader{
   background-color: #fff;
   border-bottom: 1px solid rgba(0,0,0,.0975);
-  height: 65px;
-  padding-top: 10px;
+  padding: 12px 0;
+  padding-bottom: 8px;
+  position: fixed;
+  width: 100%;
 
   .wrapper{
     display: flex;

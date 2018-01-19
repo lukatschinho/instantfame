@@ -1,12 +1,9 @@
 <template>
-    <div class="navigation">
-      <div class="wrapper">
-        <a @click="contentIsActive('feed')">Me Me Me</a>
-        <a @click="contentIsActive('upload')">Upload</a>
-        <a @click="contentIsActive('messages')">Messages</a>
-    </div>
+  <div class="navigation">
+    <a @click="contentIsActive('feed')">Me Me Me</a>
+    <a @click="contentIsActive('upload')">Upload</a>
+    <a @click="contentIsActive('messages')">Messages</a>
   </div>
-
 </template>
 
 <script>
@@ -19,7 +16,6 @@ export default {
   },
   methods: {
     contentIsActive(link) {
-      this.activeLink = link
       this.$emit("navigationBarClicked",link)
     }
   }
@@ -35,19 +31,14 @@ export default {
   width: 100%;
   background: black;
   padding: 24px 0;
+  color: white;
   background-color: #fff;
   border-top: 1px solid rgba(0,0,0,.0975);
-
-  .wrapper {
-    display: flex;
-    justify-content: space-between;
-
-    a {
-      color: #000;
-      padding: 0 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+  a {
+    color: black;
+    padding: 0 8px;
+    text-decoration: none;
+    font-weight: bold;
   }
 }
 
