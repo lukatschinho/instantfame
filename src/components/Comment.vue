@@ -1,14 +1,14 @@
 <template>
   <div class="comment">
-    <p class="commentWriter">{{ commentWriter }}</p>
-    <p class="commentText">{{ commentText }}</p>
+    <p class="commentWriter">{{ author }}</p>
+    <p class="commentText">{{ text }}</p>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Comment',
-
+  props: ["author", "text"],
   data () {
     return {
       commentWriter: 'Hans Zimmer',
