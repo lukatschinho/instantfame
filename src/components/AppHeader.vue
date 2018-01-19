@@ -1,6 +1,7 @@
 <template>
   <div class="appHeader">
     <div class="wrapper">
+
       <div class="logo">
         <img src="../assets/InstaLogo.png" alt="Logo">
       </div>
@@ -16,10 +17,11 @@
         </div>
       </a>
     </div>
-  </div>
+</div>
 </template>
 
 <script>
+
 export default {
   name: 'AppHeader',
   data () {
