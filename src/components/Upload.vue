@@ -22,7 +22,7 @@
 		<button type="button" @click="savePost(), getPost()">Post</button>
 	</form>
 	<div class="imagePreview" data-preview></div>
-	<div data-post-results></div>
+	<div data-post-results>test</div>
 </div>
 
 </template>
@@ -90,8 +90,9 @@ export default {
 
 			// get output id
 			let postResults = document.querySelectorAll('[data-post-results]');
+			console.log(postResults);
 			// build output
-			postResults.innerHTML = '';
+			postResults[0].innerHTML = '';
 
 			// get information out of localStorage post object
 			for(var i=0; i < posts.length; i++) {
@@ -99,9 +100,10 @@ export default {
 				var desc = posts[i].description;
 				var photo = posts[i].photo;
 
-				postResults.innerHTML += '<div>' +
+				postResults[0].innerHTML += '<div>' +
 																		'<p>' + title + '</p>' +
 																		'<p>' + desc + '</p>' +
+																		'<img src="'+ photo +'"></img>' +
 																	'</div>';
 			}
 		}
