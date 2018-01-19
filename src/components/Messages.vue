@@ -1,6 +1,6 @@
 <template>
   <div class="messages">
-    Feed
+    Messages
   </div>
 </template>
 

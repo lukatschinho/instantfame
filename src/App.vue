@@ -1,43 +1,55 @@
 <template>
   <div id="app">
-    <NavigationBar/>
-    <Notifications></Notifications>
-    <Feed/>
-    <Upload/>
-    <Messages v-if="setActiveContent()" />
-    <Post/>
+    <AppHeader ref="header"/>
+    <Feed v-if="this.activeLink === 'feed'"/>
+    <Upload v-if="this.activeLink === 'upload'"/>
+    <Messages v-if="this.activeLink === 'messages'"/>
+    <AppNavigationBar @navigationBarClicked="setActiveContent"/>
   </div>
 </template>
 
 <script>
-import NavigationBar from './components/NavigationBar'
-import Notifications from './components/Notifications'
+import AppHeader from './components/AppHeader'
+import AppNavigationBar from './components/AppNavigationBar'
 import Feed from './components/Feed'
 import Upload from './components/Upload'
 import Messages from './components/Messages'
-import Post from './components/Post'
 
 export default {
   name: 'app',
   components: {
-    NavigationBar,
-    Notifications,
+    AppNavigationBar,
+    AppHeader,
     Feed,
     Upload,
-    Messages,
-    Post
+    Messages
+  },
+  data () {
+    return {
+      activeLink: 'feed'
+    }
   },
   methods: {
-    setActiveContent() {
-      return true;
+    setActiveContent(link) {
+      this.activeLink = link
+      console.log(link)
     }
   }
+  // mounted () {
+	// 	console.log( "Adding ref" );
+	// 	console.log( this.$refs );
+	// 	console.log( "printing this.$refs.navigation.contentIsActive()" );
+	// 	console.log( this.$refs.navigation.contentIsActive() );
+	// 	console.log( this.$refs.navigation.navigationText );
+	// 	// console.log( article );
+  // }
 }
 </script>
 
 <style>
 
 @import 'assets/scss/normalize';
+@import 'assets/scss/basics.scss';
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -45,6 +57,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
