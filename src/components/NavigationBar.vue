@@ -31,11 +31,11 @@ export default {
   bottom: 0;
   width: 100%;
   background: black;
-  padding: 16px;
+  padding: 24px 0;
   color: white;
   a {
     color: white;
-    padding: 24px;
+    padding: 0 8px;
     text-decoration: none;
     font-weight: bold;
   }
