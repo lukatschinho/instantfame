@@ -1,6 +1,6 @@
 <template>
   <div class="notifications">
-    You have no new notifications.
+    <h3>You have no new notifications.</h3>
   </div>
 </template>
 

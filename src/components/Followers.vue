@@ -1,6 +1,6 @@
 <template>
   <div class="follower">
-    You have no new followers.
+    <h3>You have no new followers.</h3>
   </div>
 </template>
 

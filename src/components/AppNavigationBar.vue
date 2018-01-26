@@ -1,7 +1,7 @@
 <template>
   <div class="navigation">
     <a @click="contentIsActive('feed')">Me Me Me</a>
-    <a @click="contentIsActive('upload')">Upload</a>
+    <a @click="contentIsActive('upload')">Upload Photo</a>
   </div>
 </template>
 

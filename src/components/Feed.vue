@@ -1,5 +1,8 @@
 <template>
   <div class="feed">
+    <div v-if="postsReversed == null">
+      <h3>You have not posted any photos. Please upload a photo!</h3>
+    </div>
     <div class="posts" v-for="(post, index) in postsReversed">
       <Post :description="post.description" :photo="post.photo" @getData="setData" ref="posts"/>
     </div>
@@ -20,6 +23,12 @@ export default {
       }
     },
   methods: {
+    checkLocalStorage() {
+      return false
+      if(localStorage.getItem('posts') === null) {
+        return true
+      }
+    },
     setData(aLikes){
       this.$emit("getData", this.getLikeCount());
     },
@@ -35,7 +44,9 @@ export default {
   },
   computed: {
     postsReversed() {
-      return this.posts.reverse()
+      if (this.posts != null) {
+        return this.posts.reverse()
+      }
     }
   }
 }

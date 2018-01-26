@@ -2,10 +2,11 @@
 
 <!-- Upload -->
 <div class="upload">
+	<h1>Upload Photo</h1>
 	<form class="saveForm" data-save-form>
 		<!-- description of the new post-->
 		<div class="form-group">
-			<label for="post-desc">description</label>
+			<label for="post-desc">Description</label>
 			<input type="text" id="post-desc" v-model="postDesc">
 		</div>
 		<!-- photo for the new post-->
@@ -13,7 +14,7 @@
 			<input type="file" name="image" class="img" data-file @change="previewPhoto()">
 		</div>
 		<!-- button to submit the new post-->
-		<button type="button" @click="savePost(), getPost(), contentIsActive('feed')">Post</button>
+		<button class="button" type="button" @click="savePost(), getPost(), contentIsActive('feed')">Post</button>
 	</form>
 	<!--<div class="imagePreview" data-preview></div>-->
 	<canvas class="preview-canvas" id="preview-canvas" :width="canvasSize" :height="canvasSize"></canvas>
@@ -85,7 +86,7 @@ export default {
 
 			// validation
 			if(!post.description || !post.photo) {
-				alert('empty input');
+				alert('Please add your photo and description');
 				return false;
 			}
 
@@ -117,7 +118,7 @@ export default {
 <style scoped lang="scss">
 
 .saveForm {
-	padding: 50px 0 20px 0;
+	padding: 0 0 20px 0;
 	.form-group {
 		padding: 20px 0;
 	}
@@ -134,6 +135,25 @@ export default {
 
 .preview-canvas {
 	background-color: #FFFFFF;
+}
+
+.form-group {
+	input {
+		padding: 8px;
+	}
+	label {
+		margin-right: 8px;
+	}
+}
+
+.button {
+	background: #62CA30;
+	border: 0;
+	padding: 16px;
+	min-width: 256px;
+	color: white;
+	font-weight: bold;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
 }
 
 </style>

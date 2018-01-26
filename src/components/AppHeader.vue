@@ -1,9 +1,9 @@
 <template>
   <div class="appHeader">
     <div class="wrapper">
-      <div class="logo">
+      <a class="logo" @click="contentIsActive('feed')">
         <img src="../assets/icons/logo-instantfame.svg" alt="Logo">
-      </div>
+      </a>
       <div class="newNotifications">
         <a @click="contentIsActive('notifications')">
           <img class="icon" src="../assets/icons/likes.png" alt="Likes"/><span class="notificationCount">{{ newLikes }}</span>
@@ -58,8 +58,9 @@ export default {
     margin: auto;
 
     .logo{
-      img{
-        width: 150px;
+      img {
+        height: 48px;
+        margin-top: 8px;
       }
     }
 
