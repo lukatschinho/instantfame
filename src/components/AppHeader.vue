@@ -5,7 +5,7 @@
         <img src="../assets/icons/logo-instantfame.svg" alt="Logo">
       </div>
       <a href="#" @click="contentIsActive('notifications')" class="newNotifications">
-        <img class="icon" src="../assets/icons/likes.png" alt="Likes"/><img class="icon" src="../assets/icons/comments.png" alt="Comments"/><img class="icon" src="../assets/icons/follower.png" alt="Follower"/>
+        <img class="icon" src="../assets/icons/likes.png" alt="Likes"/><span class="notificationCount">{{ newLikes }}</span><img class="icon" src="../assets/icons/comments.png" alt="Comments"/><span class="notificationCount">{{ newComments }}</span><img class="icon" src="../assets/icons/follower.png" alt="Follower"/><span class="notificationCount">{{ newFollowers }}</span>
       </a>
     </div>
 </div>
@@ -15,6 +15,7 @@
 
 export default {
   name: 'AppHeader',
+  props: ["newLikes", "newComments", "newFollowers"],
   data () {
     return {
     }
@@ -60,6 +61,17 @@ export default {
         width: 30px;
         padding-left: 20px;
         }
+      }
+      span.notificationCount {
+        position: absolute;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 2px 6px;
+        margin: 15px 0px 0px -15px;
+        display: inline-block;
+        border-radius: 20px;
+        background-color: #FF4848;
       }
     }
   }

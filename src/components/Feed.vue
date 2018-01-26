@@ -1,7 +1,7 @@
 <template>
   <div class="feed">
     <div class="posts" v-for="(post, index) in postsReversed">
-      <Post :description="post.description" :photo="post.photo"/>
+      <Post :description="post.description" :photo="post.photo" @getData="setData" ref="posts"/>
     </div>
   </div>
 </template>
@@ -19,6 +19,20 @@ export default {
       posts: JSON.parse(localStorage.getItem('posts'))
       }
     },
+  methods: {
+    setData(aLikes){
+      this.$emit("getData", this.getLikeCount());
+    },
+    getLikeCount() {
+      let sumLikes = 0;
+      let sumComments = 0;
+      for(let i = 0; i < this.$refs.posts.length; i++) {
+        sumLikes += this.$refs.posts[i].getLikeCount();
+        sumComments += this.$refs.posts[i].getCommentCount();
+      }
+      return {likes: sumLikes, comments: sumComments};
+    },
+  },
   computed: {
     postsReversed() {
       return this.posts.reverse()
