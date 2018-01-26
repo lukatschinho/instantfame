@@ -6,6 +6,7 @@
       <Upload @uploadClicked="setActiveContent" v-if="this.activeLink === 'upload'"/>
       <Messages v-if="this.activeLink === 'messages'"/>
       <Notifications v-if="this.activeLink === 'notifications'"/>
+      <Followers v-if="this.activeLink === 'followers'"/>
     </div>
     <AppNavigationBar @navigationBarClicked="setActiveContent"/>
   </div>
@@ -18,6 +19,7 @@ import Feed from './components/Feed'
 import Upload from './components/Upload'
 import Messages from './components/Messages'
 import Notifications from './components/Notifications'
+import Followers from './components/Followers'
 
 export default {
   name: 'app',
@@ -27,7 +29,8 @@ export default {
     Feed,
     Upload,
     Messages,
-    Notifications
+    Notifications,
+    Followers
   },
   data () {
     return {

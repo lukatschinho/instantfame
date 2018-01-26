@@ -4,9 +4,17 @@
       <div class="logo">
         <img src="../assets/icons/logo-instantfame.svg" alt="Logo">
       </div>
-      <a href="#" @click="contentIsActive('notifications')" class="newNotifications">
-        <img class="icon" src="../assets/icons/likes.png" alt="Likes"/><span class="notificationCount">{{ newLikes }}</span><img class="icon" src="../assets/icons/comments.png" alt="Comments"/><span class="notificationCount">{{ newComments }}</span><img class="icon" src="../assets/icons/follower.png" alt="Follower"/><span class="notificationCount">{{ newFollowers }}</span>
-      </a>
+      <div class="newNotifications">
+        <a @click="contentIsActive('notifications')">
+          <img class="icon" src="../assets/icons/likes.png" alt="Likes"/><span class="notificationCount">{{ newLikes }}</span>
+        </a>
+        <a @click="contentIsActive('messages')">
+          <img class="icon" src="../assets/icons/comments.png" alt="Comments"/><span class="notificationCount">{{ newComments }}</span>
+        </a>
+        <a @click="contentIsActive('followers')">
+          <img class="icon" src="../assets/icons/follower.png" alt="Follower"/><span class="notificationCount">{{ newFollowers }}</span>
+        </a>
+      </div>
     </div>
 </div>
 </template>

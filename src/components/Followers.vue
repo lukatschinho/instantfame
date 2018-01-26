@@ -1,12 +1,12 @@
 <template>
-  <div class="notifications">
-    You have no new notifications.
+  <div class="follower">
+    You have no new followers.
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Notifications',
+  name: 'Followers',
   data () {
     return {
     }
