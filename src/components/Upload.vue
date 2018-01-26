@@ -80,7 +80,8 @@ export default {
 			// create new post object
 			let post = {
 				description: this.postDesc,
-				photo: this.postPhoto
+				photo: this.postPhoto,
+				likes: 0
 			}
 
 			// validation

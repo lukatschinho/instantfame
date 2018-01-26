@@ -45,7 +45,6 @@ export default {
     setData(data) {
       this.newLikes = data.likes
       this.newComments= data.comments
-      console.log(this.newComments)
       // console.log(this.newLikes)
     }
   }

@@ -1,7 +1,7 @@
 <template>
   <div class="feed">
-    <div class="posts" v-for="(post, index) in postsReversed">
-      <Post :description="post.description" :photo="post.photo" @getData="setData" ref="posts"/>
+    <div class="posts" :key="((posts.length -1) -index)" v-for="(post, index) in postsReversed">
+      <Post :description="post.description" :photo="post.photo" :postId="((posts.length -1) -index)" @getData="setData" ref="posts"/>
     </div>
   </div>
 </template>

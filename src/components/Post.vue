@@ -30,7 +30,7 @@ export default {
   components: {
     Comment
   },
-  props: ["description", "photo"],
+  props: ["description", "photo", "postId"],
   data () {
     return {
       name: 'Vorname Nachname',
@@ -44,7 +44,8 @@ export default {
       commentText: "",
       postComments: [],
       commentNumber: 4,
-      commentCount: 0
+      commentCount: 0,
+      posts: JSON.parse(localStorage.getItem('posts'))
     }
   },
   computed: {
@@ -52,16 +53,25 @@ export default {
     }
   },
   methods: {
+    likesToStorage(){
+      console.log(this.likeCount);
+      this.posts[this.postId].likes = this.likeCount;
+      localStorage.setItem('posts', JSON.stringify(this.posts));
+    },
     addLike() {
+      let posts = JSON.parse(localStorage.getItem('posts'));
+
       if(this.liked === false) {
         this.likeCount++;
         this.liked = true;
         this.likeIcon = 'likesNew.png';
+        this.likesToStorage();
       }
       else {
         this.likeCount--;
         this.liked = false;
         this.likeIcon = 'likes.png';
+        this.likesToStorage();
       }
     },
     getLikeCount() {
@@ -76,6 +86,7 @@ export default {
     botLike (){
       if(this.likeCount < this.likeNumber) {
         this.likeCount++;
+        this.likesToStorage();
         this.passData();
         setTimeout(() => {
            this.botLike();
@@ -110,9 +121,12 @@ export default {
     },
   },
   mounted() {
-    setTimeout(() => {
-      this.postBotComment();
-    }, 5000);
+    this.likeCount = this.posts[this.postId].likes;
+    if(this.postComments.length < this.commentNumber){
+      setTimeout(() => {
+        this.postBotComment();
+      }, 5000);
+    }
     setTimeout(() => {
       this.botLike();
     }, 3000);
