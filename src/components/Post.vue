@@ -15,9 +15,6 @@
     <div class="comments" v-for="(comment, index) in postComments">
       <Comment :author="comment.author" :text="comment.text"/>
     </div>
-    <div class="botComments">
-      <BotComment/>
-    </div>
     <div class="addComment">
       <input type="text" name="addComment" placeholder="Add a comment..." @keyup.13="addComment" v-model="commentText">
     </div>
@@ -46,7 +43,7 @@ export default {
       liked: false,
       commentText: "",
       postComments: [],
-      botComments: [{author: "Hans Wurst", text: "Nice work! #coulddoitevenbetter"}, {author: "Thorsten Höfler", text: "great! #wow"}],
+      botComments: [{author: "Hans Wurst", text: "Nice work! #coulddoitevenbetter"}, {author: "Thorsten Höfler", text: "great! #wow"}, {author: "Kevin Großkreutz", text: "I really like your posts!"}],
       commentNumber: 4,
       commentCount: 0
     }
@@ -74,7 +71,7 @@ export default {
       this.commentText = "";
     },
     postBotComment() {
-      const comment = this.botComments[Math.floor(Math.random()*2)];
+      const comment = this.botComments[Math.floor(Math.random()*this.botComments.length)];
       console.log(comment.text);
       this.postComments.push({author: comment.author, text: comment.text});
       if(this.commentCount < this.commentNumber) {
