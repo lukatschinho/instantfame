@@ -4,20 +4,16 @@
       <div class="avatar" alt="avatar"></div>
       <p class="name">{{ name }}</p>
     </div>
-    <img class="postImage" :src="photo" alt="image">
+    <img class="postImage" :src="photo" alt="image" @click="addLike">
     <div class="stats">
-      <img :src="require('../assets/icons/' + likeIcon)" alt="like" @click="addLike()">
-      <img src="../assets/icons/comments.png" alt="comment">
+      <img :src="require('../assets/icons/' + likeIcon)" alt="like" @click="addLike">
+      <img src="../assets/icons/comments.png" alt="comment" @click="setFocus">
       <p class="likeCount"><span>{{ likeCount }}</span> liked this,</p>
       <p class="commentCount"><span>{{ commentCount }}</span> commented</p>
     </div>
     <p class="description">{{ description }}</p>
     <div class="comments" v-for="(comment, index) in postComments">
-<<<<<<< HEAD
-      <Comment :author="comment.author" :text="comment.text"/>
-=======
       <Comment :author="comment.name" :text="comment.message"/>
->>>>>>> 5db9121f702716e007bb7567a6dfbc04e995c70c
     </div>
     <div class="addComment">
       <input type="text" name="addComment" placeholder="Add a comment..." @keyup.13="addComment" v-model="commentText">
@@ -42,11 +38,11 @@ export default {
       likeIcon: 'likes.png',
       img_src: '',
       likeCount: 0,
+      likeNumber: 10,
       commentCount: 0,
       liked: false,
       commentText: "",
       postComments: [],
-      botComments: [{author: "Hans Wurst", text: "Nice work! #coulddoitevenbetter"}, {author: "Thorsten Höfler", text: "great! #wow"}, {author: "Kevin Großkreutz", text: "I really like your posts!"}],
       commentNumber: 4,
       commentCount: 0
     }
@@ -68,36 +64,58 @@ export default {
         this.likeIcon = 'likes.png';
       }
     },
+    getLikeCount() {
+      return this.likeCount;
+    },
+    getCommentCount() {
+      return this.commentCount;
+    },
+    passData() {
+      this.$emit("getData")
+    },
+    botLike (){
+      if(this.likeCount < this.likeNumber) {
+        this.likeCount++;
+        this.passData();
+        setTimeout(() => {
+           this.botLike();
+         }, Math.floor((Math.random()*5)+3)*1000);
+      }
+      else {
+        this.likeNumber += 7;
+      }
+    },
     addComment() {
       this.postComments.push({name: "Mein Name", message: this.commentText});
       this.commentCount++;
       this.commentText = "";
     },
     postBotComment() {
-<<<<<<< HEAD
-      const comment = this.botComments[Math.floor(Math.random()*this.botComments.length)];
-      console.log(comment.text);
-      this.postComments.push({author: comment.author, text: comment.text});
-=======
       const c = botComment();
       this.postComments.push(c);
-      console.log(this.postComments);
->>>>>>> 5db9121f702716e007bb7567a6dfbc04e995c70c
+      this.passData();
       if(this.commentCount < this.commentNumber) {
         this.commentCount++;
         setTimeout(() => {
            this.postBotComment();
-         }, Math.floor(Math.random()*10+5)*1000);
+         }, Math.floor((Math.random()*10)+5)*1000);
       }
       else {
         this.commentNumber += 3;
       }
-    }
+    },
+    setFocus() {
+      const input = this.$el.querySelector("[name=addComment]");
+      input.focus();
+    },
   },
   mounted() {
     setTimeout(() => {
       this.postBotComment();
     }, 5000);
+    setTimeout(() => {
+      this.botLike();
+    }, 3000);
   },
 }
 </script>

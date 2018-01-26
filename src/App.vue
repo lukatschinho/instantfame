@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <AppHeader @headerClicked="setActiveContent"/>
+    <AppHeader @headerClicked="setActiveContent" :newLikes="newLikes" :newComments="newComments" :newFollowers="newFollowers"/>
     <div class="content-wrapper">
-      <Feed v-if="this.activeLink === 'feed'"/>
+      <Feed v-if="this.activeLink === 'feed'" @getData="setData"/>
       <Upload v-if="this.activeLink === 'upload'"/>
       <Messages v-if="this.activeLink === 'messages'"/>
       <Notifications v-if="this.activeLink === 'notifications'"/>
@@ -31,13 +31,22 @@ export default {
   },
   data () {
     return {
-      activeLink: 'feed'
+      activeLink: 'feed',
+      newComments: 0,
+      newLikes: 0,
+      newFollowers: 0
     }
   },
   methods: {
     setActiveContent(link) {
       this.activeLink = link
-      console.log(link)
+      // console.log(link)
+    },
+    setData(data) {
+      this.newLikes = data.likes
+      this.newComments= data.comments
+      console.log(this.newComments)
+      // console.log(this.newLikes)
     }
   }
   // mounted () {
