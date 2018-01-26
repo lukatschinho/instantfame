@@ -3,7 +3,7 @@
     <AppHeader @headerClicked="setActiveContent"/>
     <div class="content-wrapper">
       <Feed v-if="this.activeLink === 'feed'"/>
-      <Upload v-if="this.activeLink === 'upload'"/>
+      <Upload @uploadClicked="setActiveContent" v-if="this.activeLink === 'upload'"/>
       <Messages v-if="this.activeLink === 'messages'"/>
       <Notifications v-if="this.activeLink === 'notifications'"/>
     </div>
