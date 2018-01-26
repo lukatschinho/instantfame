@@ -15,6 +15,9 @@
     <div class="comments" v-for="(comment, index) in postComments">
       <Comment :author="comment.author" :text="comment.text"/>
     </div>
+    <div class="botComments">
+      <BotComment/>
+    </div>
     <div class="addComment">
       <input type="text" name="addComment" placeholder="Add a comment..." @keyup.13="addComment" v-model="commentText">
     </div>
@@ -23,11 +26,13 @@
 
 <script>
 import Comment from './Comment'
+import BotComment from './BotComment'
 
 export default {
   name: 'Post',
   components: {
-    Comment
+    Comment,
+    BotComment
   },
   props: ["description", "photo"],
   data () {
