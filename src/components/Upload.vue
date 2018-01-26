@@ -16,7 +16,7 @@
 		<button type="button" @click="savePost(), getPost()">Post</button>
 	</form>
 	<!--<div class="imagePreview" data-preview></div>-->
-	<canvas id="preview-canvas" :width="canvasSize" :height="canvasSize"></canvas>
+	<canvas class="preview-canvas" id="preview-canvas" :width="canvasSize" :height="canvasSize"></canvas>
 </div>
 
 </template>
@@ -132,6 +132,10 @@ export default {
 	background-size: cover;
 	border: 1px solid #000;
 	display: inline-block;
+}
+
+.preview-canvas {
+	background-color: #FFFFFF;
 }
 
 </style>
