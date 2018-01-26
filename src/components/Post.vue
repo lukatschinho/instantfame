@@ -41,7 +41,9 @@ export default {
       liked: false,
       commentText: "",
       postComments: [],
-      botComments: []
+      botComments: [{author: "Hans Wurst", text: "Nice work! #coulddoitevenbetter"}, {author: "Thorsten Höfler", text: "great! #wow"}],
+      commentNumber: 4,
+      commentCount: 0
     }
   },
   computed: {
@@ -62,12 +64,30 @@ export default {
       }
     },
     addComment() {
-      console.log(this.commentText);
       this.postComments.push({author: "Mein Name", text: this.commentText});
       this.commentCount++;
       this.commentText = "";
+    },
+    postBotComment() {
+      const comment = this.botComments[Math.floor(Math.random()*2)];
+      console.log(comment.text);
+      this.postComments.push({author: comment.author, text: comment.text});
+      if(this.commentCount < this.commentNumber) {
+        this.commentCount++;
+        setTimeout(() => {
+           this.postBotComment();
+         }, Math.floor(Math.random()*10+5)*1000);
+      }
+      else {
+        this.commentNumber += 3;
+      }
     }
-  }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.postBotComment();
+    }, 5000);
+  },
 }
 </script>
 
@@ -114,6 +134,7 @@ export default {
     img {
       width: 30px;
       margin-right: 10px;
+      cursor: pointer;
     }
     p {
       margin: 0 10px 0 0;
