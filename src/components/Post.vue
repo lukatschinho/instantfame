@@ -12,7 +12,7 @@
       <p class="commentCount"><span>{{ commentCount }}</span> commented</p>
     </div>
     <p class="description">{{ description }}</p>
-    <div class="comments" v-for="(comment, index) in comments">
+    <div class="comments" v-for="(comment, index) in postComments">
       <Comment :author="comment.author" :text="comment.text"/>
     </div>
     <div class="addComment">
@@ -40,7 +40,8 @@ export default {
       commentCount: 0,
       liked: false,
       commentText: "",
-      comments: [{ author: "Hans Wurst", text: "Hallo schönes Bild"}, {author: "Hans Wurst", text: "Hallo schönes Bild"}]
+      postComments: [],
+      botComments: []
     }
   },
   computed: {
@@ -61,9 +62,10 @@ export default {
       }
     },
     addComment() {
-      console.log(this.commentText)
-      this.comments.push({author: "Mein Name", text: this.commentText})
-      this.commentText = ""
+      console.log(this.commentText);
+      this.postComments.push({author: "Mein Name", text: this.commentText});
+      this.commentCount++;
+      this.commentText = "";
     }
   }
 }
