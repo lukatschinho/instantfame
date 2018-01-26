@@ -1,6 +1,6 @@
 <template>
   <div class="messages">
-    Messages
+    You have no messages.
   </div>
 </template>
 
