@@ -13,7 +13,11 @@
     </div>
     <p class="description">{{ description }}</p>
     <div class="comments" v-for="(comment, index) in postComments">
+<<<<<<< HEAD
       <Comment :author="comment.author" :text="comment.text"/>
+=======
+      <Comment :author="comment.name" :text="comment.message"/>
+>>>>>>> 5db9121f702716e007bb7567a6dfbc04e995c70c
     </div>
     <div class="addComment">
       <input type="text" name="addComment" placeholder="Add a comment..." @keyup.13="addComment" v-model="commentText">
@@ -23,13 +27,12 @@
 
 <script>
 import Comment from './Comment'
-import BotComment from './BotComment'
+import botComment from '../lib/BotComment'
 
 export default {
   name: 'Post',
   components: {
-    Comment,
-    BotComment
+    Comment
   },
   props: ["description", "photo"],
   data () {
@@ -66,14 +69,20 @@ export default {
       }
     },
     addComment() {
-      this.postComments.push({author: "Mein Name", text: this.commentText});
+      this.postComments.push({name: "Mein Name", message: this.commentText});
       this.commentCount++;
       this.commentText = "";
     },
     postBotComment() {
+<<<<<<< HEAD
       const comment = this.botComments[Math.floor(Math.random()*this.botComments.length)];
       console.log(comment.text);
       this.postComments.push({author: comment.author, text: comment.text});
+=======
+      const c = botComment();
+      this.postComments.push(c);
+      console.log(this.postComments);
+>>>>>>> 5db9121f702716e007bb7567a6dfbc04e995c70c
       if(this.commentCount < this.commentNumber) {
         this.commentCount++;
         setTimeout(() => {
