@@ -19,7 +19,7 @@
       <!-- <input type="file" id="post-photo" data-photo accept="image/*" capture="camera" @change="previewPhoto()"> -->
 		</div>
 		<!-- button to submit the new post-->
-		<button type="button" @click="savePost(), getPost()">Post</button>
+		<button type="button" @click="savePost(), getPost(), contentIsActive('feed')">Post</button>
 	</form>
 	<div class="imagePreview" data-preview></div>
 	<div data-post-results></div>
@@ -39,6 +39,9 @@ export default {
   },
 
 	methods: {
+    contentIsActive(link) {
+      this.$emit("uploadClicked",link)
+    },
 		previewPhoto() {
 			let preview = document.querySelectorAll('[data-preview]');
 			let file = document.querySelector('input[type=file]').files[0];
@@ -65,7 +68,7 @@ export default {
 			}
 
 			//console.log(post);
-			
+
 			// test if the local storage with the key 'posts' is empty
 			if(localStorage.getItem('posts') === null) {
 				// init array
@@ -83,7 +86,7 @@ export default {
 				localStorage.setItem('posts', JSON.stringify(posts));
 			}
 		},
-		
+
 		getPost() {
 			console.log('getPost');
 			let posts = JSON.parse(localStorage.getItem('posts'));
