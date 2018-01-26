@@ -77,7 +77,7 @@ export default {
         this.commentCount++;
         setTimeout(() => {
            this.postBotComment();
-         }, Math.floor(Math.random()*10+5)*1000);
+         }, Math.floor(Math.random()*1+1)*1000);
       }
       else {
         this.commentNumber += 3;

@@ -11,8 +11,6 @@ export default {
   props: ["author", "text"],
   data () {
     return {
-      commentWriter: 'Hans Zimmer',
-      commentText: 'really nice picture Donald! #shithole'
     }
   }
 }
