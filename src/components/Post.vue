@@ -38,7 +38,7 @@ export default {
       likeIcon: 'likes.png',
       img_src: '',
       likeCount: 0,
-      likeNumber: 10,
+      likeNumber: Math.floor((Math.random()*20)+5),
       commentCount: 0,
       liked: false,
       commentText: "",
